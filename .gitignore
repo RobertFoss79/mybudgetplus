@@ -1,0 +1,44 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Pytest cache
+.pytest_cache/
+
+# Logs
+*.log
+
+# Compiled files
+*.class
+*.o
+
+# Database
+*.sqlite3
+
+# Data files
+data/*.csv
+
+# Backup and temp files
+*.bak
+*.tmp
+
+# IDE specific
+.vscode/
+.idea/
+
+# Ignore config files
+*.env
