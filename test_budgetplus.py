@@ -1,5 +1,5 @@
 import pytest
-import project
+import budgetplus
 import income
 import expenses
 import utils
