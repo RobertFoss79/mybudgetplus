@@ -1,66 +1,77 @@
-from datetime import datetime
-from dateutil import parser
+import csv
+import os
 
-class Expense:
-    def __init__(self, amount=0.0, date=None):
-        self.amount = amount
-        self.date = date or datetime.now().strftime("%Y-%m-%d")
+def save_to_file(data, filename):
+    """
+    Save the budget data to a CSV file with separated sections for income and expenses,
+    including totals and final balance.
 
-    def input_expense(self):
-        while True:
-            try:
-                self.amount = float(input(f"Enter {self.__class__.__name__.lower()} expense: "))
-                self.amount = round(self.amount, 2)
-                break
-            except ValueError:
-                print("Invalid Input. Please enter a numeric value.")
-        while True:
-            user_date = input("Enter the date (YYYY-MM-DD) or leave blank for today: ") or self.date
-            try:
-                self.date = self.parse_date(user_date)
-                break
-            except ValueError as e:
-                print(e)
-        return self.amount, self.date
+    Parameters:
+    - data: dictionary containing budget data
+    - filename: string path to the file where data will be saved
+    """
+    income_data = {k: v for k, v in data.items() if 'income' in k}
+    expense_data = {k: v for k, v in data.items() if k not in income_data}
 
-    def parse_date(self, date_string):
-        try:
-            parsed_date = parser.parse(date_string)
-            return parsed_date.strftime("%Y-%m-%d")
-        except ValueError:
-            raise ValueError(
-                "Invalid date format. Please enter a valid date in the correct format or leave blank for today's date"
-            )
+    total_income = sum(v["amount"] for v in income_data.values())
+    total_expenses = sum(v["amount"] for v in expense_data.values())
+    final_balance = total_income - total_expenses
 
-class Rent(Expense):
-    pass
+    with open(filename, mode="w", newline="") as file:
+        writer = csv.writer(file)
 
-class PowerGas(Expense):
-    pass
+        writer.writerow(["Income"])
+        writer.writerow(["Category", "Amount", "Date"])
+        for category, details in income_data.items():
+            writer.writerow([category, f"{details['amount']:.2f}", details["date"]])
 
-class WaterSewerTrash(Expense):
-    pass
+        writer.writerow(["Total Income", f"{total_income:.2f}", ""])
 
-class Gasoline(Expense):
-    pass
+        writer.writerow([])
 
-class CarInsurance(Expense):
-    pass
+        writer.writerow(["Expenses"])
+        writer.writerow(["Category", "Amount", "Date"])
+        for category, details in expense_data.items():
+            writer.writerow([category, f"{details['amount']:.2f}", details["date"]])
 
-class CarPayment(Expense):
-    pass
+        writer.writerow(["Total Expenses", f"{total_expenses:.2f}", ""])
 
-class Phone(Expense):
-    pass
+        writer.writerow([])
 
-class Internet(Expense):
-    pass
+        writer.writerow(["Final Balance", f"{final_balance:.2f}", ""])
 
-class Groceries(Expense):
-    pass
+    print(f"Budget data saved to {filename}")
 
-class Household(Expense):
-    pass
+def load_from_file(filename):
+    """
+    Load budget data from a CSV file.
 
-class Hygiene(Expense):
-    pass
+    Parameters:
+    - filename: string path to the file from which data will be loaded
+
+    Returns:
+    - dictionary containing the loaded budget data
+    """
+    data = {}
+    if not os.path.exists(filename):
+        print(f"File not found: {filename}. A new file will be created.")
+        return data
+
+    try:
+        with open(filename, mode="r") as file:
+            reader = csv.reader(file)
+            next(reader)
+            next(reader)
+            for row in reader:
+                if len(row) < 3 or row[0] in ["Income", "Expenses", "Total Income", "Total Expenses", "Final Balance"]:
+                    continue
+                key = row[0]
+                try:
+                    amount = float(row[1])
+                    date = row[2]
+                    data[key] = {"amount": amount, "date": date}
+                except ValueError:
+                    print(f"Skipping invalid row: {row}")
+    except Exception as e:
+        print(f"An error occurred while loading the file: {e}")
+    return data

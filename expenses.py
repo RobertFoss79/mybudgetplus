@@ -32,6 +32,12 @@ class Expense:
                 "Invalid date format. Please enter a valid date in the correct format or leave blank for today's date"
             )
 
+class RentExpense(Expense):
+    pass
+
+class PhoneExpense(Expense):
+    pass
+
 class Rent(Expense):
     pass
 
