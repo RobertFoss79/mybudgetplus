@@ -41,7 +41,7 @@ def collect_expenses():
     while True:
         expense_type = (
             input(
-                "Enter type of expense (rent/power_gas/water_sewer_trash/gas_for_car/car_insurance/car_payment/phone/internet/groceries/household/hygiene/done): "
+                "Enter type of expense (rent/power/gas/water/gasoline/car_insurance/car_payment/phone/internet/groceries/household/hygiene/done): "
             )
             .strip()
             .lower()
@@ -50,18 +50,22 @@ def collect_expenses():
             rent = expenses.Rent()
             amount, date = rent.input_expense()
             expense_data["rent"] = {"amount": amount, "date": date}
-        elif expense_type == "power_gas" or expense_type == "power gas":
-            power_gas = expenses.PowerGas()
-            amount, date = power_gas.input_expense()
-            expense_data["power_gas"] = {"amount": amount, "date": date}
-        elif expense_type == "water_sewer_trash":
-            water_sewer_trash = expenses.WaterSewerTrash()
-            amount, date = water_sewer_trash.input_expense()
-            expense_data["water_sewer_trash"] = {"amount": amount, "date": date}
-        elif expense_type == "gas_for_car":
+        elif expense_type == "power" or expense_type == "power":
+            power_gas = expenses.Power()
+            amount, date = power.input_expense()
+            expense_data["power"] = {"amount": amount, "date": date}
+        elif expense_type == "gas" or expense_type == "gas":
+            power_gas = expenses.Gas()
+            amount, date = gas.input_expense()
+            expense_data["gas"] = {"amount": amount, "date": date}
+        elif expense_type == "water":
+            water_sewer_trash = expenses.Water()
+            amount, date = water.input_expense()
+            expense_data["water"] = {"amount": amount, "date": date}
+        elif expense_type == "gasoline":
             gas_for_car = expenses.Gasoline()
-            amount, date = gas_for_car.input_expense()
-            expense_data["gas_for_car"] = {"amount": amount, "date": date}
+            amount, date = gasoline.input_expense()
+            expense_data["gasoline"] = {"amount": amount, "date": date}
         elif expense_type == "car_insurance":
             car_insurance = expenses.CarInsurance()
             amount, date = car_insurance.input_expense()

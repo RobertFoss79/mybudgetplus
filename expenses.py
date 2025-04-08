@@ -32,19 +32,18 @@ class Expense:
                 "Invalid date format. Please enter a valid date in the correct format or leave blank for today's date"
             )
 
-class RentExpense(Expense):
-    pass
-
-class PhoneExpense(Expense):
-    pass
-
 class Rent(Expense):
     pass
 
-class PowerGas(Expense):
+class Phone(Expense):
     pass
 
-class WaterSewerTrash(Expense):
+class Power(Expense):
+    pass
+
+class Gas(Expense):
+    pass
+class Water(Expense):
     pass
 
 class Gasoline(Expense):
@@ -56,8 +55,6 @@ class CarInsurance(Expense):
 class CarPayment(Expense):
     pass
 
-class Phone(Expense):
-    pass
 
 class Internet(Expense):
     pass
