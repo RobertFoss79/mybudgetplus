@@ -1,5 +1,5 @@
 import pytest
-import budgetplus
+import mybudgetplus
 import income
 import expenses
 import utils
@@ -12,9 +12,10 @@ def sample_data():
         'payroll_income': {'amount': 1000.0, 'date': '2024-12-17'},
         'other_income': {'amount': 200.0, 'date': '2024-12-17'},
         'rent': {'amount': 800.0, 'date': '2024-12-17'},
-        'power_gas': {'amount': 150.0, 'date': '2024-12-17'},
+        'power': {'amount': 150.0, 'date': '2024-12-17'},
         'groceries': {'amount': 300.0, 'date': '2024-12-17'}
     }
+
 def test_collect_income(monkeypatch):
     inputs = iter(['1000', ''])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
@@ -30,13 +31,13 @@ def test_collect_income(monkeypatch):
 def test_collect_expenses(monkeypatch):
     inputs = iter(['850.62', ''])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    rent_expense = expenses.RentExpense().input_expense()
+    rent_expense = expenses.Rent().input_expense()
     expected_date = datetime.now().strftime("%Y-%m-%d")
     assert rent_expense == (850.62, expected_date)
 
     inputs = iter(['63.54', ''])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    phone_expense = expenses.PhoneExpense().input_expense()
+    phone_expense = expenses.Phone().input_expense()
     assert phone_expense == (63.54, expected_date)
 
 def test_save_to_file(sample_data):
