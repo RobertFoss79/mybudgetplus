@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic metadata for the document -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBudgetPlu$</title>
+    <!-- Link to your external CSS stylesheet for styling -->
+    <link rel="stylesheet" href="../static/css/styles.css" />
+  </head>
+  <body>
+    <!-- Page header -->
+    <header>
+      <div class="logo">
+        MyBudge<span class="plus">t</span>Plu<span class="dollar">$</span>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+      <!-- Section for entering income -->
+      <section id="income-section">
+        <h2>Income</h2>
+        <!-- Subheading for the income section -->
+        <form id="income-form">
+          <!-- Dropdown menu for income type -->
+          <label for="income-type">Income Type:</label>
+          <select id="income-type">
+            <option value="payroll">Payroll</option>
+            <option value="other">Other</option>
+          </select>
+          <!-- Input for income amount -->
+          <label for="income-amount">Amount:</label>
+          <input type="number" id="income-amount" step="0.01" required />
+          <!-- Input for income date -->
+          <label for="income-date">Date:</label>
+          <input type="date" id="income-date" />
+          <!-- Button to add income -->
+          <button type="button" id="add-income">Add Income</button>
+        </form>
+      </section>
+
+      <!-- Expense input section -->
+      <section id="expense-section">
+        <h2>Expenses</h2>
+        <!-- Subheading for the expenses section -->
+        <form id="expense-form">
+          <!-- Dropdown menu for expense type -->
+          <label for="expense-type">Expense Type:</label>
+          <select id="expense-type">
+            <option value="rent">Rent</option>
+            <option value="power">Power</option>
+            <option value="groceries">Groceries</option>
+            <option value="gasoline">Gasoline</option>
+            <option value="car_insurance">Car Insurance</option>
+            <option value="car_payment">Car Payment</option>
+            <option value="internet">Internet</option>
+            <option value="phone">Phone</option>
+            <option value="household">Household</option>
+            <option value="hygiene">Hygiene</option>
+          </select>
+          <!-- Input for expense amount -->
+          <label for="expense-amount">Amount:</label>
+          <input type="number" id="expense-amount" step="0.01" required />
+          <!-- Input for expense date -->
+          <label for="expense-date">Date:</label>
+          <input type="date" id="expense-date" />
+          <!-- Button to add expense -->
+          <button type="button" id="add-expense">Add Expense</button>
+        </form>
+      </section>
+
+      <!-- Section for displaying summary totals -->
+      <section id="filtered-summary">
+        <h2>Summary</h2>
+        <p>Total Income: <span id="total-income">$0.00</span></p>
+        <p>Total Expenses: <span id="total-expenses">$0.00</span></p>
+        <p>Net Balance: <span id="net-balance">$0.00</span></p>
+      </section>
+
+      <!-- Section for viewing summaries by time periods -->
+      <section id="time-period-section">
+        <h2>View Time Period Summary</h2>
+        <button type="button" id="view-weekly">Weekly Summary</button>
+        <button type="button" id="view-monthly">Monthly Summary</button>
+        <button type="button" id="view-annual">Annual Summary</button>
+      </section>
+
+      <!-- Section for saving and loading budget data -->
+      <section id="save-load-section">
+        <h2>Save & Load Budget Data</h2>
+        <button type="button" id="save-budget">Save Budget</button>
+        <button type="button" id="load-budget">Load Budget</button>
+      </section>
+    </main>
+
+    <!-- Footer for navigation -->
+    <footer>
+      <p>MyBudgetPlus © 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Include your external JavaScript file -->
+    <script src="../static/js/script.js"></script>
+  </body>
+</html>

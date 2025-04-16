@@ -1,0 +1,225 @@
+/* General body styles */
+body {
+    background: linear-gradient(to right, #FF6F61, #2196F3); /* Red to blue gradient background */
+    font-family: 'Roboto', sans-serif; /* Clean, modern font */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the app content */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Headers (h1 and h2) */
+h1, h2 {
+    font-family: 'Montserrat', sans-serif; /* Stylish font for headers */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #FF6F61; /* Red header */
+}
+
+h2 {
+    font-size: 2em;
+    color: #2196F3; /* Blue header */
+}
+
+/* Forms */
+form {
+    max-width: 600px; /* Limit the width of the entire form */
+    margin: 0 auto; /* Center the form on the screen */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds depth */
+}
+
+/* Labels */
+label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Input fields */
+input, select {
+    width: 100%; /* Full width within the form */
+    max-width: 500px; /* Limit the maximum width */
+    display: block; /* Stack elements vertically */
+    margin: 10px auto; /* Center elements within the form */
+    border: 2px solid #FF6F61; /* Red border */
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #ffffff; /* White background */
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(to bottom, #2196F3, #1565C0); /* Blue gradient */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Depth effect */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: block; /* Make buttons behave like block elements */
+    margin: 10px auto; /* Center the buttons */
+}
+
+button:hover {
+    background: #1E88E5; /* Lighter blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Hover effect */
+}
+
+/* Section styles */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.1); /* Semi-transparent black */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+th, td {
+    border: 2px solid #FF6F61; /* Red border */
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+th {
+    background-color: #2196F3; /* Blue for table headers */
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Alternating row background */
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the notification bar */
+    width: 80%; /* Reduce the width */
+    background-color: #FF6F61;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+/* Summary section - Centering */
+#filtered-summary {
+    text-align: center; /* Center align the text */
+    margin: 20px auto; /* Add spacing and center within the page */
+    max-width: 600px; /* Limit the width */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for readability */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Styles - Refined Alignment */
+.logo {
+    font-family: 'Dancing Script', cursive; /* Replace with Harlow Solid Italic equivalent */
+    font-size: 5em; /* Slightly larger text */
+    text-align: center; /* Center the logo */
+    color: orange; /* Black for contrast */
+    position: relative;
+    display: inline-block;
+    line-height: 1; /* Tighten line spacing for vertical alignment */
+    margin: 0 auto; /* Center the logo container */
+}
+
+/* Style the "+" as the "T" */
+.logo .plus {
+    font-weight: bold;
+    position: relative;
+    vertical-align: middle; /* Align "+" with the rest of the text */
+}
+
+.logo .plus::after {
+    content: ""; /* Add the strikethrough line */
+    position: absolute;
+    top: 50%; /* Center the line vertically */
+    left: -10px; /* Extend the line to the left */
+    right: -10px; /* Extend the line to the right */
+    height: 2px; /* Thickness of the line */
+    background-color: black; /* Match the text color */
+    z-index: -1; /* Push the line behind the text */
+}
+
+/* Style the "$" */
+.logo .dollar {
+    font-size: 2em; /* Keep the dollar sign prominent */
+    color: green; /* Green for contrast */
+    font-weight: bold;
+    vertical-align: middle; /* Align the dollar sign with the letters */
+    margin-left: -0.15em; /* Reduce spacing between the "$" and the "u" */
+}
+
+
+
+/* Centering the entire logo container */
+header {
+    text-align: center; /* Ensures the logo is centered in its container */
+    margin-top: 10px; /* Add some spacing above */
+}
+
+/* Links */
+a {
+    color: #64B5F6; /* Light blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white;
+    font-size: 0.9em;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
